@@ -118,3 +118,27 @@ function handleAnswer(selectedIndex) {
 }
 
 
+function showResult() {
+    questionElement.style.display = "none";
+    answersElement.style.display = "none";
+  
+    resultElement.style.display = "block";
+    resultElement.textContent = `You scored ${score} out of ${quizData.length}`;
+  
+    restartButton.style.display = "block";
+  }
+  
+  restartButton.addEventListener("click", () => {
+    currentQuestionIndex = 0;
+    score = 0;
+  
+    questionElement.style.display = "block";
+    answersElement.style.display = "block";
+  
+    resultElement.style.display = "none";
+    restartButton.style.display = "none";
+  
+    loadQuestion();
+  });
+  
+  loadQuestion();
