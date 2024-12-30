@@ -83,3 +83,38 @@ const questionElement = document.getElementById("question");
 const answersElement = document.getElementById("answers");
 const resultElement = document.getElementById("result");
 const restartButton = document.getElementById("restart");
+
+function loadQuestion() {
+  const currentQuestion = quizData[currentQuestionIndex];
+  questionElement.style.opacity = 0;
+  setTimeout(() => {
+    questionElement.textContent = currentQuestion.question;
+    questionElement.style.opacity = 1;
+  }, 300);
+
+  answersElement.innerHTML = "";
+  currentQuestion.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.textContent = answer;
+    button.onclick = () => handleAnswer(index);
+    answersElement.appendChild(button);
+  });
+}
+
+function handleAnswer(selectedIndex) {
+  const currentQuestion = quizData[currentQuestionIndex];
+
+  if (selectedIndex === currentQuestion.correct) {
+    score++;
+  }
+
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < quizData.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+}
+
+
