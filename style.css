@@ -51,6 +51,14 @@ body {
     transform: scale(1.05);
 }
 
+.answers button.correct {
+    background-color: #28a745 !important;
+}
+
+.answers button.wrong {
+    background-color: #dc3545 !important;
+}
+
 .result {
     font-size: 1.5em;
     margin-top: 20px;
