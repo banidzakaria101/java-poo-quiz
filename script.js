@@ -87,7 +87,7 @@ function showResult() {
     restartButton.style.display = 'block';
 }
 
-restartButton.addEventListener('click', () => {
+function restartQuiz() {
     currentQuestionIndex = 0;
     score = 0;
 
@@ -97,7 +97,10 @@ restartButton.addEventListener('click', () => {
     resultElement.style.display = 'none';
     restartButton.style.display = 'none';
 
+    progressBarElement.style.width = '0%';
     loadQuestion();
-});
+}
+
+restartButton.addEventListener('click', restartQuiz);
 
 loadQuestion();
