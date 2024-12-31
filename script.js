@@ -32,22 +32,42 @@ function updateProgress() {
 }
 
 function loadQuestion() {
-    updateProgress();
-    const currentQuestion = quizData[currentQuestionIndex];
-    questionElement.style.opacity = 0;
-    setTimeout(() => {
-        questionElement.textContent = currentQuestion.question;
-        questionElement.style.opacity = 1;
-    }, 300);
+    // Fade out current question and answers
+    questionElement.classList.add('fade-out');
+    answersElement.classList.add('fade-out');
 
-    answersElement.innerHTML = '';
-    currentQuestion.answers.forEach((answer, index) => {
-        const button = document.createElement('button');
-        button.textContent = answer;
-        button.onclick = () => handleAnswer(index, button);
-        answersElement.appendChild(button);
-    });
+    // Wait for the fade-out animation to complete
+    setTimeout(() => {
+        // Update progress bar and question counter
+        updateProgress();
+
+        // Load the new question
+        const currentQuestion = quizData[currentQuestionIndex];
+        questionElement.textContent = currentQuestion.question;
+
+        // Clear and load new answers
+        answersElement.innerHTML = '';
+        currentQuestion.answers.forEach((answer, index) => {
+            const button = document.createElement('button');
+            button.textContent = answer;
+            button.onclick = () => handleAnswer(index, button);
+            answersElement.appendChild(button);
+        });
+
+        // Fade in new content
+        questionElement.classList.remove('fade-out');
+        answersElement.classList.remove('fade-out');
+        questionElement.classList.add('fade-in');
+        answersElement.classList.add('fade-in');
+
+        // Remove the fade-in class after animation completes
+        setTimeout(() => {
+            questionElement.classList.remove('fade-in');
+            answersElement.classList.remove('fade-in');
+        }, 300);
+    }, 300); // Match the duration of the fade-out animation
 }
+
 
 function handleAnswer(selectedIndex, selectedButton) {
     const currentQuestion = quizData[currentQuestionIndex];

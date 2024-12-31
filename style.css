@@ -66,6 +66,18 @@ body {
     text-align: center;
 }
 
+/* Fade-out effect */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Fade-in effect */
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
 .question {
     font-size: 1.8em;
     margin-bottom: 20px;
