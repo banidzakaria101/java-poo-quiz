@@ -32,6 +32,7 @@ function updateProgress() {
 }
 
 function loadQuestion() {
+    updateProgress();
     const currentQuestion = quizData[currentQuestionIndex];
     questionElement.style.opacity = 0;
     setTimeout(() => {
