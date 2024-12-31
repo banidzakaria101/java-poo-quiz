@@ -26,9 +26,15 @@ const questionCounterElement = document.getElementById('question-counter');
 const progressBarElement = document.getElementById('progress-bar');
 
 function updateProgress() {
-    questionCounterElement.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
-    const progressPercentage = ((currentQuestionIndex + 1) / quizData.length) * 100;
-    progressBarElement.style.width = `${progressPercentage}%`;
+    if (currentQuestionIndex < quizData.length) {
+        questionCounterElement.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+        const progressPercentage = ((currentQuestionIndex + 1) / quizData.length) * 100;
+        progressBarElement.style.width = `${progressPercentage}%`;
+    } else {
+        // Display completion message
+        questionCounterElement.textContent = "You completed the quiz!";
+        progressBarElement.style.width = "100%";
+    }
 }
 
 function loadQuestion() {
@@ -114,6 +120,7 @@ function showResult() {
 
     questionElement.style.display = 'none';
     answersElement.style.display = 'none';
+    questionCounterElement.textContent = "You completed the quiz!";
 
     resultElement.style.display = 'block';
     resultElement.innerHTML = `
