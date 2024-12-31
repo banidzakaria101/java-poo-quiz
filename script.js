@@ -22,6 +22,14 @@ const questionElement = document.getElementById('question');
 const answersElement = document.getElementById('answers');
 const resultElement = document.getElementById('result');
 const restartButton = document.getElementById('restart');
+const questionCounterElement = document.getElementById('question-counter');
+const progressBarElement = document.getElementById('progress-bar');
+
+function updateProgress() {
+    questionCounterElement.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+    const progressPercentage = ((currentQuestionIndex + 1) / quizData.length) * 100;
+    progressBarElement.style.width = `${progressPercentage}%`;
+}
 
 function loadQuestion() {
     const currentQuestion = quizData[currentQuestionIndex];
