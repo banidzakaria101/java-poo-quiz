@@ -120,6 +120,38 @@ body {
 .result {
     font-size: 1.8em;
     margin-top: 20px;
+    color: #444;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.result .score-display {
+    font-size: 3em;
+    font-weight: bold;
+    color: #6c63ff;
+    margin-bottom: 10px;
+}
+
+.result .score {
+    color: #28a745;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.result .total {
+    color: #dc3545;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.result p {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 15px;
+}
+
+
+.result {
+    font-size: 1.8em;
+    margin-top: 20px;
     color: #333;
 }
 
