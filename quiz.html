@@ -10,15 +10,18 @@
 
 <body>
     <div class="quiz-title">Welcome to the Java POO Quiz! Test your knowledge about Object-Oriented Programming in Java.</div>
-    <div class="quiz-container">
-        <div id="quiz">
-            <div class="question" id="question">Question will appear here</div>
-            <div class="answers" id="answers">
-                <!-- Answer buttons will be inserted here -->
-            </div>
+    <div class="question-counter" id="question-counter">Question 1 of 10</div>
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div id="quiz">
+        <div class="question" id="question">Question will appear here</div>
+        <div class="answers" id="answers">
+            <!-- Answer buttons will be inserted here -->
         </div>
-        <div class="result" id="result" style="display: none;"></div>
-        <button id="restart" style="display: none;">Restart Quiz</button>
+    </div>
+    <div class="result" id="result" style="display: none;"></div>
+    <button id="restart" style="display: none;">Restart Quiz</button>
 
         <script src="script.js"></script>
     </div>
