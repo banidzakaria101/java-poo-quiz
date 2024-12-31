@@ -98,14 +98,34 @@ function handleAnswer(selectedIndex, selectedButton) {
 }
 
 function showResult() {
+    const totalQuestions = quizData.length;
+    const percentage = (score / totalQuestions) * 100;
+
+    let adviceMessage;
+    if (percentage === 100) {
+        adviceMessage = "Excellent! You're a Java POO master!";
+    } else if (percentage >= 80) {
+        adviceMessage = "Great job! Keep up the good work!";
+    } else if (percentage >= 50) {
+        adviceMessage = "Good effort! A bit more practice and you'll be there.";
+    } else {
+        adviceMessage = "Don't give up! Study and try again.";
+    }
+
     questionElement.style.display = 'none';
     answersElement.style.display = 'none';
 
     resultElement.style.display = 'block';
-    resultElement.textContent = `You scored ${score} out of ${quizData.length}`;
+    resultElement.innerHTML = `
+        <div class="score-display">
+            <span class="score">${score}</span>/<span class="total">${totalQuestions}</span>
+        </div>
+        <p>${adviceMessage}</p>
+    `;
 
     restartButton.style.display = 'block';
 }
+
 
 function restartQuiz() {
     currentQuestionIndex = 0;
